@@ -30,10 +30,7 @@ public class SensorDetect implements SensorEventListener {
         public void onShake(int count);
     }
 
-    @Override
-    public void onAccuracyChanged(SensorDetect sensor, int accuracy) {
-        // ignore
-    }
+    public void onShake(int count){}
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -68,6 +65,7 @@ public class SensorDetect implements SensorEventListener {
                 mListener.onShake(mShakeCount);
             }
         }
+
     }
 
     @Override

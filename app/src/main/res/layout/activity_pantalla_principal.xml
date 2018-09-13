@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="25dp">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/txtPregunta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

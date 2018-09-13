@@ -10,7 +10,7 @@ import android.widget.Toast;
 import android.widget.*;
 
 public class PantallaPrincipal extends AppCompatActivity {
-    //TODO cambiar icono
+
     int i=0;
     // Para detectar el shakeo
     private SensorManager mSensorManager;
@@ -33,25 +33,27 @@ public class PantallaPrincipal extends AppCompatActivity {
         mShakeDetector.setOnShakeListener(new SensorDetect.OnShakeListener() {
 
             @Override
-            public void onShake(int count) {
-                TextView txt=findViewById(R.id.Txt_Mensaje);
-                int aleatorio=nAleatorio();
-                try {
-                    if(aleatorio==0 ||aleatorio==4 || aleatorio==8)
-                        txt.setText(respuestas[0]);
-                    else
-                    if(aleatorio==1 || aleatorio==5 || aleatorio==9)
-                        txt.setText(respuestas[1]);
-                    else
-                    if(aleatorio==2 || aleatorio==6)
-                        txt.setText(respuestas[2]);
-                    else
-                    if(aleatorio==3 || aleatorio==7 )
-                        txt.setText(respuestas[3]);
+            public void onShake() {
+                TextView pregunta= findViewById(R.id.txtPregunta);
+                String preguntas=""+pregunta.getText();
+                if(preguntas.contains("?")) {
+                    TextView txt = findViewById(R.id.Txt_Mensaje);
+                    int aleatorio = nAleatorio();
+                    try {
+                        if (aleatorio == 0 || aleatorio == 4 || aleatorio == 8)
+                            txt.setText(respuestas[0]);
+                        else if (aleatorio == 1 || aleatorio == 5 || aleatorio == 9)
+                            txt.setText(respuestas[1]);
+                        else if (aleatorio == 2 || aleatorio == 6)
+                            txt.setText(respuestas[2]);
+                        else if (aleatorio == 3 || aleatorio == 7)
+                            txt.setText(respuestas[3]);
 
 
-                } catch (Exception e) {
+                    } catch (Exception e) {
+                    }
                 }
+                else Toast.makeText(PantallaPrincipal.this, "Por favor inserta una pregunta", Toast.LENGTH_LONG).show();
             }
         });
     }
